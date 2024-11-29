@@ -9,6 +9,7 @@ import Porosite from './pages/Porosite'
 import Navigimi from "./components/Navigimi"
 import Kontakti from "./pages/Kontakti"
 import RrethNesh from "./pages/RrethNesh"
+import Footer from "./components/Footer"
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/bej_porosi" element={<BejPorosi />} />
         <Route path="/porosite" element={<Porosite />} />
       </Routes>
+      <Footer />
     </div>
   )
 }
