@@ -1,4 +1,5 @@
 import { assets } from "../assets/assets"
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -18,8 +19,8 @@ const Footer = () => {
                 <div>
                     <p className="text-xl font-medium mb-5">KOMPANIA</p>
                     <ul className="flex flex-col gap-1 text-gray-600">
-                        <li>BALLINA</li>
-                        <li>RRETH NESH</li>
+                        <Link to="/"><li>BALLINA</li></Link>
+                        <Link to='/rreth_nesh'><li>RRETH NESH</li></Link>
                         <li>DËRGESA</li>
                         <li>POLITIKA E PRIVATËSISË</li>
                     </ul>
@@ -36,7 +37,7 @@ const Footer = () => {
 
             <div>
                 <hr />
-                <p className="py-5 text-sm text-center">Copyright 2024@ forever.com - All Rights Reserved</p>
+                <p className="py-5 text-sm text-center">Të Drejtat e Autorit 2024 - Të Drejtat e Rezervuara</p>
             </div>
 
         </div>

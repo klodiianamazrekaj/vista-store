@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { ShopContext } from "../context/ShopContext"
 import Titulli from "./Titulli";
-import ArtikullProdukti from "./ArtikullProdukti";
+import ArtikullProdukti from "../components/ArtikullProdukti";
 
 const KoleksioniFundit = () => {
 
@@ -10,7 +10,7 @@ const KoleksioniFundit = () => {
 
     useEffect(() => {
         setProduktetFundit(products.slice(0, 10));
-    }, []);
+    }, [products]);
 
     return (
         <div className="my-10">
