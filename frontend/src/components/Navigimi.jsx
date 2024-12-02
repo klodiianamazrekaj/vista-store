@@ -42,7 +42,7 @@ const Navigimi = () => {
             <div className='flex items-center gap-6'>
                 <img onClick={() => setShfaqKerkimin(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="Search" />
                 <div className='relative group'>
-                    <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" />
+                    <Link to='/kycu'><img src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" /></Link>
 
                     {/* dropdown menu */}
                     <div className='absolute right-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out'>
