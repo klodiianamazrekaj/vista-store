@@ -1,0 +1,13 @@
+INSTALIMI I PAKETAVE NE BACKEND DHE PERDORIMI I TYRE
+cors - perdoret per lidhjen frontend me backend, e lejon frontend API me aksesu backend-in
+dotenv - nepermjet kesaj i perdorim env variablat ne projekt
+express - perdoret per krijimin e API-ve
+jsonwebtoken - nepermjet kesaj e lejojme autentifikimin e perdoruesit
+mongoose - e menaxhon aktivitetin ne databaze
+multer - na lejon per te ruajtur fotot ne cloudinary storage
+nodemon - e ristarton backend-in kurdo qe bejme ndryshime ne kod
+razorpay, stripe - online payment integration
+validator - e shikon nese te dhenat qe vijne nga perdoruesi jane valide ose nuk jane valide
+bcrypt - e enkriptojme password-in e perdoruesit dhe e ruajme ne databaze
+
+=============================================================================================
