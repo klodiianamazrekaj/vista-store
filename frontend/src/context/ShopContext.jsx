@@ -17,9 +17,9 @@ const ShopContextProvider = (props) => {
     const [artikujtNeKarroce, setArtikujtNeKarroce] = useState({});
     const navigo = useNavigate();
 
-    const shtoNeKarroce = async (itemId, size) => {
+    const shtoNeKarroce = async (itemId, madhesia) => {
 
-        if (!size) {
+        if (!madhesia) {
             toast.error('Ju lutem zgjidhni madhësinë e produktit');
             return;
         }
@@ -27,15 +27,15 @@ const ShopContextProvider = (props) => {
         let teDhenatEKarroces = structuredClone(artikujtNeKarroce);
 
         if (teDhenatEKarroces[itemId]) {
-            if (teDhenatEKarroces[itemId][size]) {
-                teDhenatEKarroces[itemId][size] += 1;
+            if (teDhenatEKarroces[itemId][madhesia]) {
+                teDhenatEKarroces[itemId][madhesia] += 1;
             }
             else {
-                teDhenatEKarroces[itemId][size] = 1;
+                teDhenatEKarroces[itemId][madhesia] = 1;
             }
         } else {
             teDhenatEKarroces[itemId] = {};
-            teDhenatEKarroces[itemId][size] = 1;
+            teDhenatEKarroces[itemId][madhesia] = 1;
         }
         setArtikujtNeKarroce(teDhenatEKarroces);
 
@@ -62,10 +62,10 @@ const ShopContextProvider = (props) => {
         console.log(artikujtNeKarroce);
     }, [artikujtNeKarroce]);
 
-    const perditesoTotalinProdukteve = async (itemId, size, quantity) => {
+    const perditesoTotalinProdukteve = async (itemId, madhesia, sasia) => {
         let teDhenatEKarroces = structuredClone(artikujtNeKarroce);
 
-        teDhenatEKarroces[itemId][size] = quantity;
+        teDhenatEKarroces[itemId][madhesia] = sasia;
 
         setArtikujtNeKarroce(teDhenatEKarroces);
     }
@@ -78,7 +78,7 @@ const ShopContextProvider = (props) => {
             for (const item in artikujtNeKarroce[items]) {
                 try {
                     if (artikujtNeKarroce[items][item] > 0) {
-                        shumaKarroces += infoArtikullit.price * artikujtNeKarroce[items][item];
+                        shumaKarroces += infoArtikullit.cmimi * artikujtNeKarroce[items][item];
                     }
                 } catch (error) {
                     //

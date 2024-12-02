@@ -6,7 +6,7 @@ import { ShopContext } from '../context/ShopContext'
 
 const Navigimi = () => {
 
-    const [visible, setVisible] = useState(false);
+    const [eDukshme, setEDukshme] = useState(false);
 
     const { setShfaqKerkimin, merrNumrinArtikujveNeKarroce } = useContext(ShopContext);
 
@@ -67,21 +67,21 @@ const Navigimi = () => {
                     </p>
                 </Link>
 
-                <img onClick={() => setVisible(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' alt="" />
+                <img onClick={() => setEDukshme(true)} src={assets.menu_icon} className='w-5 cursor-pointer sm:hidden' alt="" />
             </div>
 
             {/* sidebar menu per ekrane me te vogla */}
-            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
+            <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${eDukshme ? 'w-full' : 'w-0'}`}>
                 <div className='flex flex-col text-gray-600'>
-                    <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
+                    <div onClick={() => setEDukshme(false)} className='flex items-center gap-4 p-3 cursor-pointer'>
                         <img src={assets.dropdown_icon} className='h-4 rotate-180' alt="" />
                         <p>Kthehu</p>
                     </div>
 
-                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/'>BALLINA</NavLink>
-                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/koleksioni'>KOLEKSIONI</NavLink>
-                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/rreth_nesh'>RRETH NESH</NavLink>
-                    <NavLink onClick={() => setVisible(false)} className='py-2 pl-6 border' to='/kontakti'>KONTAKTI</NavLink>
+                    <NavLink onClick={() => setEDukshme(false)} className='py-2 pl-6 border' to='/'>BALLINA</NavLink>
+                    <NavLink onClick={() => setEDukshme(false)} className='py-2 pl-6 border' to='/koleksioni'>KOLEKSIONI</NavLink>
+                    <NavLink onClick={() => setEDukshme(false)} className='py-2 pl-6 border' to='/rreth_nesh'>RRETH NESH</NavLink>
+                    <NavLink onClick={() => setEDukshme(false)} className='py-2 pl-6 border' to='/kontakti'>KONTAKTI</NavLink>
                 </div>
             </div>
 

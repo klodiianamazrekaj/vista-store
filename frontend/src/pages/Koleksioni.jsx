@@ -44,7 +44,7 @@ const Koleksioni = () => {
         // do të kërkojë emrin e produktit dhe do të filtroje vetëm ato produkte 
         // që e kanë emrin që përmban fjalën e kërkuar
         if (shfaqKerkimin && kerko) {
-            kopjoProduktet = kopjoProduktet.filter(item => item.name.toLowerCase().includes(kerko.toLowerCase()));
+            kopjoProduktet = kopjoProduktet.filter(item => item.emri.toLowerCase().includes(kerko.toLowerCase()));
         }
 
         // filtrimi sipas kategorise
@@ -65,11 +65,11 @@ const Koleksioni = () => {
 
         switch (llojiSortimit) {
             case 'ulet-larte':
-                setFiltroProduktet(fpKopje.sort((a, b) => (a.price - b.price)));
+                setFiltroProduktet(fpKopje.sort((a, b) => (a.cmimi - b.cmimi)));
                 break;
 
             case 'larte-ulet':
-                setFiltroProduktet(fpKopje.sort((a, b) => (b.price - a.price)));
+                setFiltroProduktet(fpKopje.sort((a, b) => (b.cmimi - a.cmimi)));
                 break;
 
             default:
@@ -152,7 +152,7 @@ const Koleksioni = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6">
                     {
                         filtroProduktet.map((item, index) => (
-                            <ArtikullProdukti key={index} name={item.name} id={item._id} price={item.price} image={item.image} />
+                            <ArtikullProdukti key={index} emri={item.emri} id={item._id} cmimi={item.cmimi} foto={item.foto} />
                         ))
                     }
                 </div>
