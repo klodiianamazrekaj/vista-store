@@ -1,10 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { Link, NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ShopContext } from '../context/ShopContext'
 
 const Navigimi = () => {
 
     const [visible, setVisible] = useState(false);
+
+    const { setShfaqKerkimin, merrNumrinArtikujveNeKarroce } = useContext(ShopContext);
 
     return (
         <div className="flex items-center justify-between py-5 font-medium">
@@ -36,7 +40,7 @@ const Navigimi = () => {
             </ul>
 
             <div className='flex items-center gap-6'>
-                <img src={assets.search_icon} className='w-5 cursor-pointer' alt="Search" />
+                <img onClick={() => setShfaqKerkimin(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="Search" />
                 <div className='relative group'>
                     <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" />
 
@@ -59,7 +63,7 @@ const Navigimi = () => {
                                     text-white aspect-square 
                                     rounded-full text-[8px]'
                     >
-                        8
+                        {merrNumrinArtikujveNeKarroce()}
                     </p>
                 </Link>
 

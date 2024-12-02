@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Routes, Route } from "react-router-dom"
 import Ballina from './pages/Ballina'
 import Koleksioni from './pages/Koleksioni'
@@ -10,11 +11,16 @@ import Navigimi from "./components/Navigimi"
 import Kontakti from "./pages/Kontakti"
 import RrethNesh from "./pages/RrethNesh"
 import Footer from "./components/Footer"
+import ShiritiKerkimit from "./components/ShiritiKerkimit"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+      <ToastContainer />
       <Navigimi />
+      <ShiritiKerkimit />
 
       {/* routes */}
       <Routes>
@@ -22,7 +28,7 @@ const App = () => {
         <Route path="/koleksioni" element={<Koleksioni />} />
         <Route path="/rreth_nesh" element={<RrethNesh />} />
         <Route path="/kontakti" element={<Kontakti />} />
-        <Route path="/produkti/:productId" element={<Produkti />} />
+        <Route path="/produkti/:produktId" element={<Produkti />} />
         <Route path="/karroca" element={<Karroca />} />
         <Route path="/kycu" element={<Kycu />} />
         <Route path="/bej_porosi" element={<BejPorosi />} />

@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { assets } from "../assets/assets";
@@ -7,7 +6,7 @@ import Titulli from "../components/Titulli";
 import ArtikullProdukti from "../components/ArtikullProdukti";
 const Koleksioni = () => {
 
-    const { products } = useContext(ShopContext);
+    const { products, kerko, shfaqKerkimin } = useContext(ShopContext);
     const [shfaqFilterat, setShfaqFilterat] = useState(false);
     const [filtroProduktet, setFiltroProduktet] = useState([]);
     const [kategoria, setKategoria] = useState([]);
@@ -39,12 +38,21 @@ const Koleksioni = () => {
     }
 
     const aplikoFilterat = () => {
+        // krijon një kopje të listës products, që është lista fillestare e produkteve.
         let kopjoProduktet = products.slice();
 
+        // do të kërkojë emrin e produktit dhe do të filtroje vetëm ato produkte 
+        // që e kanë emrin që përmban fjalën e kërkuar
+        if (shfaqKerkimin && kerko) {
+            kopjoProduktet = kopjoProduktet.filter(item => item.name.toLowerCase().includes(kerko.toLowerCase()));
+        }
+
+        // filtrimi sipas kategorise
         if (kategoria.length > 0) {
             kopjoProduktet = kopjoProduktet.filter(item => kategoria.includes(item.kategoria));
         }
 
+        // filtrimi sipas nenkategorise 
         if (nenkategoria.length > 0) {
             kopjoProduktet = kopjoProduktet.filter(item => nenkategoria.includes(item.nenkategoria));
         }
@@ -76,7 +84,7 @@ const Koleksioni = () => {
     */
     useEffect(() => {
         aplikoFilterat();
-    }, [kategoria, nenkategoria]);
+    }, [kategoria, nenkategoria, kerko, shfaqKerkimin]);
 
     useEffect(() => {
         sortoProduktet();
