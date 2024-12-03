@@ -4,6 +4,7 @@ import 'dotenv/config';
 import lidhjaDB from './config/mongodb.js';
 import lidhjaCloudinary from './config/cloudinary.js';
 import perdoruesiRouter from './routes/perdoruesiRoute.js';
+import produktRouter from './routes/produktRoute.js';
 
 // configurimi i app
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 
 // api endpoints
 app.use('/api/perdoruesi', perdoruesiRouter);
+app.use('/api/produkti', produktRouter);
 app.get('/', (req, res) => {
     res.send("API eshte duke punuar");
 });

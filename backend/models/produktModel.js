@@ -11,7 +11,7 @@ const produktSchema = new mongoose.Schema({
     madhesia: { type: Array, required: true },
     bestseller: { type: Boolean },
     data: { type: Number, required: true },
-});
+}, { collection: 'produktet' });
 
 const produktModel = mongoose.models.produkt || mongoose.model("produkt", produktSchema);
 
