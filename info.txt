@@ -12,3 +12,7 @@ validator - e shikon nese te dhenat qe vijne nga perdoruesi jane valide ose nuk 
 bcrypt - e enkriptojme password-in e perdoruesit dhe e ruajn ne databaze
 
 =============================================================================================
+
+INSTALIMI I PAKETAVE TEK ADMIN PANEL
+
+axios - perdoret per thirrjen e API
