@@ -6,7 +6,7 @@ import Titulli from "../components/Titulli";
 import ArtikullProdukti from "../components/ArtikullProdukti";
 const Koleksioni = () => {
 
-    const { products, kerko, shfaqKerkimin } = useContext(ShopContext);
+    const { produktet, kerko, shfaqKerkimin } = useContext(ShopContext);
     const [shfaqFilterat, setShfaqFilterat] = useState(false);
     const [filtroProduktet, setFiltroProduktet] = useState([]);
     const [kategoria, setKategoria] = useState([]);
@@ -38,8 +38,8 @@ const Koleksioni = () => {
     }
 
     const aplikoFilterat = () => {
-        // krijon një kopje të listës products, që është lista fillestare e produkteve.
-        let kopjoProduktet = products.slice();
+        // krijon një kopje të listës produktet, që është lista fillestare e produkteve.
+        let kopjoProduktet = produktet.slice();
 
         // do të kërkojë emrin e produktit dhe do të filtroje vetëm ato produkte 
         // që e kanë emrin që përmban fjalën e kërkuar
@@ -84,7 +84,7 @@ const Koleksioni = () => {
     */
     useEffect(() => {
         aplikoFilterat();
-    }, [kategoria, nenkategoria, kerko, shfaqKerkimin]);
+    }, [kategoria, nenkategoria, kerko, shfaqKerkimin, produktet]);
 
     useEffect(() => {
         sortoProduktet();

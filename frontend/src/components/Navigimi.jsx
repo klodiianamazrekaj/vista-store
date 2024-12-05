@@ -8,7 +8,14 @@ const Navigimi = () => {
 
     const [eDukshme, setEDukshme] = useState(false);
 
-    const { setShfaqKerkimin, merrNumrinArtikujveNeKarroce } = useContext(ShopContext);
+    const { setShfaqKerkimin, merrNumrinArtikujveNeKarroce, navigo, token, setToken, setArtikujtNeKarroce } = useContext(ShopContext);
+
+    const dil = () => {
+        localStorage.removeItem('token');
+        setToken('');
+        setArtikujtNeKarroce({});
+        navigo('/kycu');
+    }
 
     return (
         <div className="flex items-center justify-between py-5 font-medium">
@@ -42,16 +49,19 @@ const Navigimi = () => {
             <div className='flex items-center gap-6'>
                 <img onClick={() => setShfaqKerkimin(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="Search" />
                 <div className='relative group'>
-                    <Link to='/kycu'><img src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" /></Link>
+                    <img onClick={() => token ? null : navigo('/kycu')} src={assets.profile_icon} className='w-5 cursor-pointer' alt="Profile" />
 
                     {/* dropdown menu */}
-                    <div className='absolute right-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out'>
-                        <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded shadow-lg'>
-                            <p className='cursor-pointer hover:text-black'>Profili Im</p>
-                            <p className='cursor-pointer hover:text-black'>Porositë</p>
-                            <p className='cursor-pointer hover:text-black'>Dil</p>
+                    {
+                        token &&
+                        <div className='absolute right-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300 ease-in-out'>
+                            <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded shadow-lg'>
+                                <p className='cursor-pointer hover:text-black'>Profili Im</p>
+                                <p onClick={() => navigo('/porosite')} className='cursor-pointer hover:text-black'>Porositë</p>
+                                <p onClick={dil} className='cursor-pointer hover:text-black'>Dil</p>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
 
                 {/* ikona karroca  */}

@@ -5,12 +5,12 @@ import ArtikullProdukti from "../components/ArtikullProdukti";
 
 const KoleksioniFundit = () => {
 
-    const { products } = useContext(ShopContext);
-    const [prduktetFundit, setProduktetFundit] = useState([]);
+    const { produktet } = useContext(ShopContext);
+    const [produktetFundit, setProduktetFundit] = useState([]);
 
     useEffect(() => {
-        setProduktetFundit(products.slice(0, 10));
-    }, [products]);
+        setProduktetFundit(produktet.slice(0, 10));
+    }, [produktet]);
 
     return (
         <div className="my-10">
@@ -24,7 +24,7 @@ const KoleksioniFundit = () => {
             {/* shfaqja e produkteve */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
                 {
-                    prduktetFundit.map((item, index) => (
+                    produktetFundit.map((item, index) => (
                         <ArtikullProdukti key={index} id={item._id} foto={item.foto} emri={item.emri} cmimi={item.cmimi} />
                     ))
                 }

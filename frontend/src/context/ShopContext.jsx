@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from "react";
-import { products } from "../assets/assets";
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 export const ShopContext = createContext();
 
@@ -12,9 +13,12 @@ const ShopContextProvider = (props) => {
 
     const valuta = '€';
     const tarifa_dorezimit = 10;
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const [kerko, setKerko] = useState('');
     const [shfaqKerkimin, setShfaqKerkimin] = useState(false);
     const [artikujtNeKarroce, setArtikujtNeKarroce] = useState({});
+    const [produktet, setProduktet] = useState([]);
+    const [token, setToken] = useState('');
     const navigo = useNavigate();
 
     const shtoNeKarroce = async (itemId, madhesia) => {
@@ -74,7 +78,7 @@ const ShopContextProvider = (props) => {
         let shumaKarroces = 0;
 
         for (const items in artikujtNeKarroce) {
-            let infoArtikullit = products.find(produkti => produkti._id === items);
+            let infoArtikullit = produktet.find(produkti => produkti._id === items);
             for (const item in artikujtNeKarroce[items]) {
                 try {
                     if (artikujtNeKarroce[items][item] > 0) {
@@ -88,12 +92,33 @@ const ShopContextProvider = (props) => {
         return shumaKarroces;
     }
 
+    const merrTeDhenatEProduktit = async () => {
+        try {
+            const response = await axios.get(backendUrl + "/api/produkti/lista_produkteve");
+            console.log(response.data);
+            if (response.data.success) {
+                setProduktet(response.data.produktet);
+            }
+            else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        merrTeDhenatEProduktit();
+    }, []);
+
     const value = {
-        products, valuta, tarifa_dorezimit,
+        produktet, valuta, tarifa_dorezimit,
         kerko, setKerko, shfaqKerkimin, setShfaqKerkimin,
-        artikujtNeKarroce, shtoNeKarroce,
+        artikujtNeKarroce, setArtikujtNeKarroce, shtoNeKarroce,
         merrNumrinArtikujveNeKarroce, perditesoTotalinProdukteve,
-        merrShumenKarroces, navigo
+        merrShumenKarroces, navigo, backendUrl,
+        setToken, token,
 
     }
 

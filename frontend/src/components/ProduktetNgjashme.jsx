@@ -7,19 +7,19 @@ import ArtikullProdukti from "./ArtikullProdukti";
 
 const ProduktetNgjashme = ({ kategoria, nenkategoria }) => {
 
-    const { products } = useContext(ShopContext);
+    const { produktet } = useContext(ShopContext);
     const [teNgjashme, setTeNgjashme] = useState([]);
 
     useEffect(() => {
-        if (products.length > 0) {
-            let kopjoProduktet = products.slice();
+        if (produktet.length > 0) {
+            let kopjoProduktet = produktet.slice();
 
             kopjoProduktet = kopjoProduktet.filter((item) => kategoria === item.kategoria);
             kopjoProduktet = kopjoProduktet.filter((item) => nenkategoria === item.nenkategoria);
 
             setTeNgjashme(kopjoProduktet.slice(0, 5));
         }
-    }, [products])
+    }, [produktet])
 
     return (
         <div className="my-24">

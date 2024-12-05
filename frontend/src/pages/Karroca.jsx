@@ -6,7 +6,7 @@ import TotaliKarroces from "../components/TotaliKarroces";
 
 const Karroca = () => {
 
-    const { products, valuta, artikujtNeKarroce, perditesoTotalinProdukteve, navigo } = useContext(ShopContext);
+    const { produktet, valuta, artikujtNeKarroce, perditesoTotalinProdukteve, navigo } = useContext(ShopContext);
 
     const [teDhenatNeKarroce, setTeDhenatNeKarroce] = useState([]);
 
@@ -35,7 +35,7 @@ const Karroca = () => {
             <div>
                 {
                     teDhenatNeKarroce.map((item, index) => {
-                        const teDhenatEProdukteve = products.find(produkti => produkti._id === item._id);
+                        const teDhenatEProdukteve = produktet.find(produkti => produkti._id === item._id);
 
                         return (
                             <div key={index} className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4">

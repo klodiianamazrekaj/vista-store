@@ -95,7 +95,7 @@ export const assets = {
     cross_icon
 }
 
-export const products = [
+export const produktet = [
     {
         _id: "aaaaa",
         emri: "Women Round Neck Cotton Top",

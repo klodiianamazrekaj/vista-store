@@ -6,13 +6,13 @@ import ProduktetNgjashme from '../components/ProduktetNgjashme';
 const Produkti = () => {
 
     const { produktId } = useParams();
-    const { products, valuta, shtoNeKarroce } = useContext(ShopContext);
+    const { produktet, valuta, shtoNeKarroce } = useContext(ShopContext);
     const [teDhenatProduktit, setTeDhenatProduktit] = useState(false);
     const [foto, setFoto] = useState('');
     const [madhesia, setMadhesia] = useState('');
 
     const merrTeDhenatProduktit = async () => {
-        products.map((item) => {
+        produktet.map((item) => {
             if (item._id === produktId) {
                 setTeDhenatProduktit(item);
                 setFoto(item.foto[0]);
@@ -23,7 +23,7 @@ const Produkti = () => {
 
     useEffect(() => {
         merrTeDhenatProduktit();
-    }, [produktId, products]);
+    }, [produktId, produktet]);
 
 
     return teDhenatProduktit ? (

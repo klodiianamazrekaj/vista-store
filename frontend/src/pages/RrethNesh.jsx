@@ -13,7 +13,7 @@ const RrethNesh = () => {
                 <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
                     <p>Te Forever, ne besojmë se stili është një shprehje unike e vetes. Me koleksionin tonë të pasur të rrobave të modës, ju mund të krijoni pamjen që reflekton personalitetin dhe shijen tuaj. Pavarësisht nëse kërkoni veshje për përditshmëri, evente të veçanta apo për të rifreskuar garderobën tuaj, ne kemi gjithçka që ju nevojitet.</p>
                     <b className='text-gray-800'>Misioni Ynë</b>
-                    <p><p>Ne jemi të përkushtuar të ofrojmë cilësi të lartë, çmime të arsyeshme dhe një eksperiencë blerjeje të shpejtë dhe të sigurt. Me një gamë të gjerë produktesh të përzgjedhura me kujdes, ju mund të bëni shopping online lehtësisht dhe të gjeni gjithmonë diçka që i përshtatet stilit tuaj unik.</p></p>
+                    <p>Ne jemi të përkushtuar të ofrojmë cilësi të lartë, çmime të arsyeshme dhe një eksperiencë blerjeje të shpejtë dhe të sigurt. Me një gamë të gjerë produktesh të përzgjedhura me kujdes, ju mund të bëni shopping online lehtësisht dhe të gjeni gjithmonë diçka që i përshtatet stilit tuaj unik.</p>
                 </div>
             </div>
 
