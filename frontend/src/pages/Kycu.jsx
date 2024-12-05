@@ -52,12 +52,6 @@ const Kycu = () => {
         }
     }, [token]);
 
-    useEffect(() => {
-        if (!token && localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'));
-        }
-    }, [])
-
     return (
         <div className="space-y-24">
             <form onSubmit={onSubmitHandler} className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800">

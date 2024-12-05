@@ -11,20 +11,23 @@ const Karroca = () => {
     const [teDhenatNeKarroce, setTeDhenatNeKarroce] = useState([]);
 
     useEffect(() => {
-        const teDhenaTePerkohshme = [];
-        for (const items in artikujtNeKarroce) {
-            for (const item in artikujtNeKarroce[items]) {
-                if (artikujtNeKarroce[items][item] > 0) {
-                    teDhenaTePerkohshme.push({
-                        _id: items,
-                        madhesia: item,
-                        sasia: artikujtNeKarroce[items][item]
-                    })
+
+        if (produktet.length > 0) {
+            const teDhenaTePerkohshme = [];
+            for (const items in artikujtNeKarroce) {
+                for (const item in artikujtNeKarroce[items]) {
+                    if (artikujtNeKarroce[items][item] > 0) {
+                        teDhenaTePerkohshme.push({
+                            _id: items,
+                            madhesia: item,
+                            sasia: artikujtNeKarroce[items][item]
+                        })
+                    }
                 }
             }
+            setTeDhenatNeKarroce(teDhenaTePerkohshme);
         }
-        setTeDhenatNeKarroce(teDhenaTePerkohshme);
-    }, [artikujtNeKarroce]);
+    }, [artikujtNeKarroce, produktet]);
 
     return (
         <div className="border-t pt-14">

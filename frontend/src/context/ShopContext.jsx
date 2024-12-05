@@ -28,22 +28,29 @@ const ShopContextProvider = (props) => {
             return;
         }
 
-        let teDhenatEKarroces = structuredClone(artikujtNeKarroce);
+        let teDhenatNeKarroce = structuredClone(artikujtNeKarroce);
 
-        if (teDhenatEKarroces[itemId]) {
-            if (teDhenatEKarroces[itemId][madhesia]) {
-                teDhenatEKarroces[itemId][madhesia] += 1;
+        if (teDhenatNeKarroce[itemId]) {
+            if (teDhenatNeKarroce[itemId][madhesia]) {
+                teDhenatNeKarroce[itemId][madhesia] += 1;
             }
             else {
-                teDhenatEKarroces[itemId][madhesia] = 1;
+                teDhenatNeKarroce[itemId][madhesia] = 1;
             }
         } else {
-            teDhenatEKarroces[itemId] = {};
-            teDhenatEKarroces[itemId][madhesia] = 1;
+            teDhenatNeKarroce[itemId] = {};
+            teDhenatNeKarroce[itemId][madhesia] = 1;
         }
-        setArtikujtNeKarroce(teDhenatEKarroces);
+        setArtikujtNeKarroce(teDhenatNeKarroce);
 
-        // toast.success('Produkti është shtuar me sukses në karrocë');
+        if (token) {
+            try {
+                await axios.post(backendUrl + '/api/karroca/shto_ne_karroce', { itemId, madhesia }, { headers: { token } });
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
     }
 
     const merrNumrinArtikujveNeKarroce = () => {
@@ -67,11 +74,20 @@ const ShopContextProvider = (props) => {
     }, [artikujtNeKarroce]);
 
     const perditesoTotalinProdukteve = async (itemId, madhesia, sasia) => {
-        let teDhenatEKarroces = structuredClone(artikujtNeKarroce);
+        let teDhenatNeKarroce = structuredClone(artikujtNeKarroce);
 
-        teDhenatEKarroces[itemId][madhesia] = sasia;
+        teDhenatNeKarroce[itemId][madhesia] = sasia;
 
-        setArtikujtNeKarroce(teDhenatEKarroces);
+        setArtikujtNeKarroce(teDhenatNeKarroce);
+
+        if (token) {
+            try {
+                await axios.post(backendUrl + '/api/karroca/perditeso_karrocen', { itemId, madhesia, sasia }, { headers: { token } });
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
     }
 
     const merrShumenKarroces = () => {
@@ -108,9 +124,29 @@ const ShopContextProvider = (props) => {
         }
     }
 
+    const merrKarrocenPerdoruesit = async (token) => {
+        try {
+            const response = await axios.post(backendUrl + '/api/karroca/merr_karrocen_perdoruesit', {}, { headers: { token } });
+
+            if (response.data.success) {
+                setArtikujtNeKarroce(response.data.teDhenatNeKarroce);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
     useEffect(() => {
         merrTeDhenatEProduktit();
     }, []);
+
+    useEffect(() => {
+        if (!token && localStorage.getItem('token')) {
+            setToken(localStorage.getItem('token'))
+            merrKarrocenPerdoruesit(localStorage.getItem('token'));
+        }
+    }, [])
 
     const value = {
         produktet, valuta, tarifa_dorezimit,
