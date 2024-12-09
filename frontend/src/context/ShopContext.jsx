@@ -94,7 +94,7 @@ const ShopContextProvider = (props) => {
         let shumaKarroces = 0;
 
         for (const items in artikujtNeKarroce) {
-            let infoArtikullit = produktet.find(produkti => produkti._id === items);
+            let infoArtikullit = produktet.find(produkt => produkt._id === items);
             for (const item in artikujtNeKarroce[items]) {
                 try {
                     if (artikujtNeKarroce[items][item] > 0) {

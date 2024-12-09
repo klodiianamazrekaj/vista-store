@@ -14,6 +14,7 @@ import Footer from "./components/Footer"
 import ShiritiKerkimit from "./components/ShiritiKerkimit"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Verifiko from "./pages/Verifiko"
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/kycu" element={<Kycu />} />
         <Route path="/bej_porosi" element={<BejPorosi />} />
         <Route path="/porosite" element={<Porosite />} />
+        <Route path="/verify" element={<Verifiko />} />
       </Routes>
       <Footer />
     </div>

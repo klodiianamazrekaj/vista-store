@@ -15,7 +15,7 @@ const TotaliKarroces = () => {
             <div className="flex flex-col gap-2 mt-2 text-sm">
                 <div className="flex justify-between">
                     <p>Nëntotali</p>
-                    <p>{valuta} {merrShumenKarroces()}.00</p>
+                    <p>{valuta} {merrShumenKarroces()}</p>
                 </div>
                 <hr />
                 <div className="flex justify-between">
@@ -25,7 +25,7 @@ const TotaliKarroces = () => {
                 <hr />
                 <div className="flex justify-between">
                     <b>Totali</b>
-                    <b>{valuta} {merrShumenKarroces() === 0 ? 0 : merrShumenKarroces() + tarifa_dorezimit}.00</b>
+                    <b>{valuta} {merrShumenKarroces() === 0 ? 0 : merrShumenKarroces() + tarifa_dorezimit}</b>
                 </div>
             </div>
         </div>
