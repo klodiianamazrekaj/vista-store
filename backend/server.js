@@ -6,6 +6,7 @@ import lidhjaCloudinary from './config/cloudinary.js';
 import perdoruesiRouter from './routes/perdoruesiRoute.js';
 import produktRouter from './routes/produktRoute.js';
 import karrocaRouter from './routes/karrocaRoute.js';
+import porosiaRouter from './routes/porosiaRoute.js';
 
 // configurimi i app
 const app = express();
@@ -21,6 +22,7 @@ app.use(cors());
 app.use('/api/perdoruesi', perdoruesiRouter);
 app.use('/api/produkti', produktRouter);
 app.use('/api/karroca', karrocaRouter);
+app.use('/api/porosia', porosiaRouter);
 app.get('/', (req, res) => {
     res.send("API eshte duke punuar");
 });
